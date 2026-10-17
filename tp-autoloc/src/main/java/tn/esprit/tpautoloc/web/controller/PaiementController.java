@@ -1,0 +1,28 @@
+package tn.esprit.tpautoloc.web.controller;
+
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import tn.esprit.tpautoloc.domain.Paiement;
+import tn.esprit.tpautoloc.service.IPaiementService;
+
+@RestController
+@RequestMapping("/paiements")
+@RequiredArgsConstructor
+public class PaiementController {
+
+    private final IPaiementService paiementService;
+
+    @GetMapping
+    public List<Paiement> findAll() {
+        return paiementService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Paiement findById(@PathVariable Long id) {
+        return paiementService.findById(id);
+    }
+}
